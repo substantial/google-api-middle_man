@@ -1,6 +1,6 @@
 # GoogleTravelAgent
 
-TODO: Write a gem description
+ Use a middle man for dealing with Google API
 
 ## Installation
 
@@ -17,8 +17,24 @@ Or install it yourself as:
     $ gem install google-api-middle_man
 
 ## Usage
+Look under `examples`
+```ruby
+    #!/usr/bin/env ruby
 
-TODO: Write usage instructions here
+    require 'google-api-middle_man'
+
+    email = "google_service_account@email"
+    calendarId = "google_calendar_id"
+
+    google_config = {
+      application_name: "google_project_name",
+      key_location: 'client.p12',
+      google_service_email: email
+    }
+
+    agent = GoogleAPIMiddleMan::Agent.new(google_config)
+    agent.calendar_events(calendar_id)
+```
 
 ## Contributing
 
@@ -27,3 +43,4 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+

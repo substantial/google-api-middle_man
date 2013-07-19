@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'google_travel_agent'
+require 'google-api-middle_man'
 
 email = "google_service_account@email"
 calendarId = "google_calendar_id"
@@ -11,6 +11,6 @@ google_config = {
   google_service_email: email
 }
 
-travel_agent = GoogleTravelAgent::Agent.new(google_config)
+travel_agent = GoogleAPIMiddleMan::Agent.new(google_config)
 travel_agent.calendar_events(calendar_id)
 

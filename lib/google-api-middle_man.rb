@@ -1,6 +1,6 @@
-require "google_travel_agent/version"
+require "google-api-middle_man/version"
 
-module GoogleTravelAgent
+module GoogleAPIMiddleMan
   class MissingConfigOptions < Exception; end
 
   class Agent

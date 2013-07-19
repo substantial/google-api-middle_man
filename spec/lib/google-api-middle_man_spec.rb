@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GoogleTravelAgent::Agent do
+describe GoogleAPIMiddleMan::Agent do
 
   let(:google_config) {
     {
@@ -15,23 +15,23 @@ describe GoogleTravelAgent::Agent do
   end
 
   it "should require a configuration object" do
-    expect { GoogleTravelAgent::Agent.new('foo') }.to raise_error
+    expect { GoogleAPIMiddleMan::Agent.new('foo') }.to raise_error
   end
 
   it "should require a complete config" do
     incomplete_config = google_config
     incomplete_config.delete(:key_location)
-    expect { GoogleTravelAgent::Agent.new(incomplete_config) }.to raise_error GoogleTravelAgent::MissingConfigOptions
+    expect { GoogleAPIMiddleMan::Agent.new(incomplete_config) }.to raise_error GoogleAPIMiddleMan::MissingConfigOptions
   end
 
   it "should create a client with the correct application name" do
     Google::APIClient.should_receive(:new).with(application_name: 'Foo App')
-    GoogleTravelAgent::Agent.new(google_config)
+    GoogleAPIMiddleMan::Agent.new(google_config)
   end
 
   describe "#calendar_events" do
     let(:calendar_hash) { double }
-    let(:travel_agent) { GoogleTravelAgent::Agent.new(google_config) }
+    let(:travel_agent) { GoogleAPIMiddleMan::Agent.new(google_config) }
     let(:mock_service_account) { double(authorize: "authorization") }
 
     before do
@@ -59,7 +59,7 @@ describe GoogleTravelAgent::Agent do
   end
 
   describe "private methods" do
-    let(:travel_agent) { GoogleTravelAgent::Agent.new(google_config) }
+    let(:travel_agent) { GoogleAPIMiddleMan::Agent.new(google_config) }
 
     describe "scopes" do
       let(:default_scope) { 'https://www.googleapis.com/auth/prediction' }

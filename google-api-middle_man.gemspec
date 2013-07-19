@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'google_travel_agent/version'
+require 'google-api-middle_man/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "google_travel_agent"
+  spec.name          = "google-api-middle_man"
   spec.version       = GoogleTravelAgent::VERSION
   spec.authors       = ["Shaun Dern"]
   spec.email         = ["shaun@substantial.com"]

@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = GoogleTravelAgent::VERSION
   spec.authors       = ["Shaun Dern"]
   spec.email         = ["shaun@substantial.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Simplify the Google API}
+  spec.summary       = %q{Simplify the Google API}
   spec.homepage      = ""
   spec.license       = "MIT"
 

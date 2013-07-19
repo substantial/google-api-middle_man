@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["shaun@substantial.com"]
   spec.description   = %q{Simplify the Google API}
   spec.summary       = %q{Simplify the Google API}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/substantial/google-api-middle_man"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

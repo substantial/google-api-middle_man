@@ -10,14 +10,14 @@ module GoogleAPIMiddleMan
 
     def initialize(config)
       [:application_name, :key_location, :google_service_email].each do |key|
-        unless config.has_key?(key)
+        unless config.has_key?(key) || config.has_key?(key.to_s)
           raise MissingConfigOptions, "config is missing #{key}"
         end
       end
 
-      @application_name = config[:application_name]
-      @key_location = config[:key_location]
-      @google_service_email = config[:google_service_email]
+      @application_name = config[:application_name] || config['application_name']
+      @key_location = config[:key_location] || config['key_location']
+      @google_service_email = config[:google_service_email] || config['google_service_email']
 
       @client = Google::APIClient.new(application_name: @application_name)
     end

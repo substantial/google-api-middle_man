@@ -29,6 +29,16 @@ describe GoogleAPIMiddleMan::Agent do
     GoogleAPIMiddleMan::Agent.new(google_config)
   end
 
+  it "should allow strings or symbols for keys" do
+    google_config_as_string = {
+      'application_name' => 'foo app',
+      'key_location' => 'some key location',
+      'google_service_email' => 'email stuff'
+    }
+    Google::APIClient.should_receive(:new).with(application_name: 'foo app')
+    GoogleAPIMiddleMan::Agent.new(google_config_as_string)
+  end
+
   describe "#calendar_events" do
     let(:calendar_hash) { double }
     let(:travel_agent) { GoogleAPIMiddleMan::Agent.new(google_config) }

@@ -7,9 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = "google-api-middle_man"
   spec.version       = GoogleTravelAgent::VERSION
   spec.authors       = ["Shaun Dern"]
-  spec.email         = ["shaun@substantial.com"]
-  spec.description   = %q{Simplify the Google API}
-  spec.summary       = %q{Simplify the Google API}
+  spec.email         = ["shaun@substantial.com", "dempsey@substantial.com"]
+  spec.description   = %q{Simplify the Google API using a service account}
+  spec.summary       = %q{Simplify the Google API using a service account}
   spec.homepage      = "https://github.com/substantial/google-api-middle_man"
   spec.license       = "MIT"
 
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency "rspec"
 
   spec.add_dependency "google-api-client", "~> 0.6.3"
 end

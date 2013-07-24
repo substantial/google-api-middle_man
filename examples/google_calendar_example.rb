@@ -9,8 +9,9 @@ google_config = {
 }
 calendar_id = "google_calendar_id@group.calendar.google.com"
 
-travel_agent = GoogleAPIMiddleMan::Agent.new(google_config)
-events = travel_agent.calendar_events(calendar_id)
+agent = GoogleAPIMiddleMan::Agent.new(google_config)
+
+events = agent.calendar_events(calendar_id)
 
 puts events.items.inspect
 

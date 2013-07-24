@@ -2,15 +2,16 @@
 
 require 'google-api-middle_man'
 
-email = "google_service_account@email"
-calendarId = "google_calendar_id"
-
 google_config = {
-  application_name: "google_project_name",
+  application_name: "Google Project Name"
   key_location: 'client.p12',
-  google_service_email: email
+  google_service_email: "google_service_account_email@developer.gserviceaccount.com"
 }
+calendar_id = "google_calendar_id@group.calendar.google.com"
 
 travel_agent = GoogleAPIMiddleMan::Agent.new(google_config)
-travel_agent.calendar_events(calendar_id)
+events = travel_agent.calendar_events(calendar_id)
+
+puts events.items.inspect
+
 

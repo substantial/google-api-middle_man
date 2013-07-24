@@ -84,7 +84,7 @@ describe GoogleAPIMiddleMan::Agent do
         travel_agent.send(:calendar_scope).should == calendar_scope
       end
 
-      it "should have a have a scopes" do
+      it "should have a have scopes" do
         travel_agent.send(:scopes).should == scopes
       end
     end
@@ -139,6 +139,37 @@ describe GoogleAPIMiddleMan::Agent do
       it "should discover calendar endpoint" do
         travel_agent.client.should_receive(:discovered_api).with('calendar', 'v3')
         travel_agent.send(:calendar_service)
+      end
+    end
+
+    describe "#events_list_options_hash" do
+
+      let(:options_hash) { travel_agent.send(:events_list_options_hash) }
+      let(:now) { DateTime.new(2010, 1, 1, 10, 0, 0) }
+      let(:tomorrow) { now + 1 }
+
+      before do
+        DateTime.stub(:now) { now }
+      end
+
+      it "should only return single events and convert repeating to single" do
+        options_hash['singleEvents'].should == 'true'
+      end
+
+      it "should order by start time" do
+        options_hash['orderBy'].should == 'startTime'
+      end
+
+      it "should only return events that start a day from now" do
+        options_hash['timeMax'].should == tomorrow
+      end
+
+      it "should only return events that end after now" do
+        options_hash['timeMin'].should == now
+      end
+
+      it "should only return the fields specified" do
+        options_hash['fields'].should == 'description,items(colorId,created,creator(displayName,email),description,end,endTimeUnspecified,id,kind,location,start,status,summary),kind,summary,updated'
       end
     end
   end

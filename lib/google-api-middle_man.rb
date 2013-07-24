@@ -25,7 +25,8 @@ module GoogleAPIMiddleMan
     def calendar_events(calendar_id)
       @client.authorization = service_account.authorize
 
-      options = {'calendarId' => calendar_id}
+      options = events_list_options_hash.merge('calendarId' => calendar_id)
+
       result = @client.execute(api_method: calendar_service.events.list, parameters: options)
 
       result.data
@@ -58,6 +59,16 @@ module GoogleAPIMiddleMan
 
     def calendar_service
       @client.discovered_api('calendar', 'v3')
+    end
+
+    def events_list_options_hash
+      {
+        'singleEvents' => 'true',
+        'orderBy' => 'startTime',
+        'timeMax' => DateTime.now + 1,
+        'timeMin' => DateTime.now,
+        'fields' => 'description,items(colorId,created,creator(displayName,email),description,end,endTimeUnspecified,id,kind,location,start,status,summary),kind,summary,updated'
+      }
     end
   end
 end
